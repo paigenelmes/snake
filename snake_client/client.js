@@ -22,23 +22,7 @@ const connect = function() {
   return conn;
 };
 
-const setupInput = function() {
-  const stdin = process.stdin;
-  stdin.setRawMode(true);
-  stdin.setEncoding("utf8");
-  stdin.resume();
-  //close the game if the user presses control + c
-  const handleUserInput = function(input) {
-    if (input === '\u0003') {
-      process.exit();
-    }
-  };
-  stdin.on("data", handleUserInput);
-  return stdin;
-};
-
-// exporting the connect, set up input, and user input functions
+// exporting the connect function
 module.exports = {
-  connect,
-  setupInput
+  connect
 };
