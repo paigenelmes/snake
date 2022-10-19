@@ -1,3 +1,5 @@
+const { connect } = require("http2");
+
 // Stores the active TCP connection object.
 let connection;
 
@@ -12,21 +14,37 @@ const setupInput = function(conn) {
 };
 
 const handleUserInput = function(input) {
-  //Write 'Move: up' when w is pressed
+  //Move up when w is pressed
   if (input === "w") {
     connection.write("Move: up");
   }
-  //Write 'Move: left' when a is pressed
+  //Move left when a is pressed
   if (input === "a") {
     connection.write("Move: left");
   }
-  //Write 'Move: down' when s is pressed
+  //Move down when s is pressed
   if (input === "s") {
     connection.write("Move: down");
   }
-  //Write 'Move: right' when d is pressed
+  //Move right when d is pressed
   if (input === "d") {
     connection.write("Move: right");
+  }
+  //Say hello when j is pressed
+  if (input === "j") {
+    connection.write("Say: Hello there!");
+  }
+  //Say goodbye when k is pressed
+  if (input === "k") {
+    connection.write("Say: See you later!");
+  }
+  //Say good job when i is pressed
+  if (input === "i") {
+    connection.write("Say: Good job!");
+  }
+  //Say oh no when i is pressed
+  if (input === "l") {
+    connection.write("Say: Oh no!");
   }
   //close the game if the user presses control + c
   if (input === '\u0003') {
