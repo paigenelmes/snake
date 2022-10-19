@@ -1,5 +1,3 @@
-const { connect } = require("http2");
-
 // Stores the active TCP connection object.
 let connection;
 
