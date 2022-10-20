@@ -1,3 +1,5 @@
+const { moveUpKey, moveDownKey, moveRightKey, moveLeftKey, closeKey, messagesObj } = require("./constants");
+
 // Stores the active TCP connection object.
 let connection;
 
@@ -12,44 +14,31 @@ const setupInput = function(conn) {
 };
 
 const handleUserInput = function(input) {
-  //Move up when w is pressed
-  if (input === "w") {
+  //Move up
+  if (input === moveUpKey) {
     connection.write("Move: up");
   }
-  //Move left when a is pressed
-  if (input === "a") {
+  //Move left
+  if (input === moveLeftKey) {
     connection.write("Move: left");
   }
-  //Move down when s is pressed
-  if (input === "s") {
+  //Move down
+  if (input === moveDownKey) {
     connection.write("Move: down");
   }
-  //Move right when d is pressed
-  if (input === "d") {
+  //Move right
+  if (input === moveRightKey) {
     connection.write("Move: right");
   }
-  //Say hello when j is pressed
-  if (input === "j") {
-    connection.write("Say: Hello there!");
+  //Send a message by calling on the messages object
+  if (messagesObj[input]) {
+    connection.write(messagesObj[input]);
   }
-  //Say goodbye when k is pressed
-  if (input === "k") {
-    connection.write("Say: See you later!");
-  }
-  //Say good job when i is pressed
-  if (input === "i") {
-    connection.write("Say: Good job!");
-  }
-  //Say oh no when i is pressed
-  if (input === "l") {
-    connection.write("Say: Oh no!");
-  }
-  //close the game if the user presses control + c
-  if (input === '\u0003') {
+  //close the game after pressing control + c
+  if (input === closeKey) {
     process.exit();
   }
 };
-
 
 //exporting the set up input function
 
