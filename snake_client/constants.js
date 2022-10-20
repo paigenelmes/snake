@@ -1,14 +1,17 @@
-//ip & port
+//IP & Port
 const IP = 'localhost';
 const PORT = 50541;
-//movement keys
+
+//Movement keys
 const moveUpKey = "w";
 const moveLeftKey = "a";
 const moveDownKey = "s";
 const moveRightKey = "d";
-//close the game key
+
+//Close the game key
 const closeKey = "\u0003";
-//messages object
+
+//Messages object
 const messagesObj = {
   "j": "Say: Hello there!",
   "k": "Say: See you later!",
@@ -16,7 +19,7 @@ const messagesObj = {
   "l": "Say: Oh no!"
 };
 
-
+//Exporting constants
 module.exports = {
   IP,
   PORT,

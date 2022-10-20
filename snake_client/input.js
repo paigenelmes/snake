@@ -1,8 +1,10 @@
+//Requirements
 const { moveUpKey, moveDownKey, moveRightKey, moveLeftKey, closeKey, messagesObj } = require("./constants");
 
-// Stores the active TCP connection object.
+//Stores the active TCP connection object
 let connection;
 
+//Set Up Input function
 const setupInput = function(conn) {
   connection = conn;
   const stdin = process.stdin;
@@ -13,20 +15,21 @@ const setupInput = function(conn) {
   return stdin;
 };
 
+//Handle User Input function
 const handleUserInput = function(input) {
-  //Move up
+  //Move up if moveUpKey is pressed
   if (input === moveUpKey) {
     connection.write("Move: up");
   }
-  //Move left
+  //Move left if moveLeftKey is pressed
   if (input === moveLeftKey) {
     connection.write("Move: left");
   }
-  //Move down
+  //Move down if moveDownKey is pressed
   if (input === moveDownKey) {
     connection.write("Move: down");
   }
-  //Move right
+  //Move right if moveRightKey is pressed
   if (input === moveRightKey) {
     connection.write("Move: right");
   }
@@ -34,14 +37,13 @@ const handleUserInput = function(input) {
   if (messagesObj[input]) {
     connection.write(messagesObj[input]);
   }
-  //close the game after pressing control + c
+  //Close the game after pressing control + c
   if (input === closeKey) {
     process.exit();
   }
 };
 
-//exporting the set up input function
-
+//Exporting the set up input function
 module.exports = {
   setupInput
 };
